@@ -2,12 +2,16 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\TranslateRequest;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class TranslateService
 {
-    public function handle(Request $request): array
+    /**
+     * @param TranslateRequest $request
+     * @return array
+     */
+    public function handle(TranslateRequest $request): array
     {
         try {
             $text = GoogleTranslate::trans($request->text, $request->language, 'en');
